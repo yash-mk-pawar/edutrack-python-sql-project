@@ -1,0 +1,31 @@
+# --- Python ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments (crucial so you don't upload gigabytes of libraries)
+venv/
+env/
+.venv/
+
+# Distribution / build artifacts
+build/
+dist/
+*.egg-info/
+
+# --- Environment & Secrets ---
+# Keep your API keys and database passwords private!
+.env
+*.log
+
+# --- Databases ---
+# Ignore local SQLite or database files if you are creating them locally
+*.db
+*.sqlite3
+
+# --- IDEs ---
+# VS Code local workspace settings (optional, but keeps your repo clean)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
