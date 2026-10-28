@@ -49,7 +49,7 @@ class AuthenticationManager:
         attempts = 0
         while attempts < 3:
             print(f"Captcha: {captcha}")
-            entered_captcha = input("Enter CAPTCHA or Refresh: ").upper()
+            entered_captcha = input("Enter CAPTCHA or Refresh: ")
             
             if entered_captcha == 'Refresh':
                 captcha = ''
@@ -94,7 +94,7 @@ class AuthenticationManager:
             print("Enter a valid Email Address.")
             return 
         
-        existing_user = self.database_manager.fetch_one('''SELECT user_id FROM Users WHERE username = ? or email = ? or phone_number = ?''', (username, email, phone_number))
+        existing_user = self.database_manager.fetch_one('''SELECT user_id FROM Users WHERE user_name = ? or email = ? or phone_number = ?''', (username, email, phone_number))
         
         if existing_user is not None:
             print("User with this username, email, or phone number already exists.")
@@ -111,7 +111,7 @@ class AuthenticationManager:
         current_time = time.time()
         
         self.database_manager.execute_query('''
-            INSERT INTO Users (full_name, username, phone_number, email, address, password, created_at, account_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
+            INSERT INTO Users (full_name, user_name, phone_number, email, address, password, created_at, account_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
             (full_name, username, phone_number, email, address, password, current_time, 'Active'))
         
         print("Registration Successful.")
